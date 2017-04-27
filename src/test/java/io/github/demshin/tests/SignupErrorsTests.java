@@ -8,9 +8,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-/**
- * Created by demshin on 24/04/2017.
- */
 public class SignupErrorsTests extends BaseTest {
     @Test
     public void verifyNameError() {
@@ -21,7 +18,7 @@ public class SignupErrorsTests extends BaseTest {
         //skip filling name input
         signUpPage.fillEmail(Generators.randomEmail());
         signUpPage.fillPassword(Generators.randomPassword());
-        signUpPage.clickSubmitButton();
+        signUpPage.clickSubmitButtonExpectingMessage();
         assertEquals(signUpPage.getTextOfSignupError(), "Please enter your name");
     }
 
@@ -34,7 +31,7 @@ public class SignupErrorsTests extends BaseTest {
         signUpPage.fillName(Generators.randomName());
         //skip filling email input
         signUpPage.fillPassword(Generators.randomPassword());
-        signUpPage.clickSubmitButton();
+        signUpPage.clickSubmitButtonExpectingMessage();
         assertEquals(signUpPage.getTextOfSignupError(), "Please enter your email address");
     }
 
@@ -47,7 +44,7 @@ public class SignupErrorsTests extends BaseTest {
         signUpPage.fillName(Generators.randomName());
         signUpPage.fillEmail("a.demshin@ya.ru");
         signUpPage.fillPassword(Generators.randomPassword());
-        signUpPage.clickSubmitButton();
+        signUpPage.clickSubmitButtonExpectingMessage();
         assertEquals(signUpPage.getTextOfSignupError(), "Sorry, this email is already registered");
     }
 
@@ -61,7 +58,7 @@ public class SignupErrorsTests extends BaseTest {
         signUpPage.fillName(nameAndPassword);
         signUpPage.fillEmail(Generators.randomEmail());
         signUpPage.fillPassword(nameAndPassword);
-        signUpPage.clickSubmitButton();
+        signUpPage.clickSubmitButtonExpectingMessage();
         assertEquals(signUpPage.getTextOfSignupError(), "Sorry, name and password cannot be the same");
     }
 }

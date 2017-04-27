@@ -1,7 +1,10 @@
 package io.github.demshin.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import static io.github.demshin.utils.Time.waitForElementPresent;
 
 public class SignUpPage extends GenericPage {
 
@@ -39,11 +42,6 @@ public class SignUpPage extends GenericPage {
         return submitButton.isDisplayed();
     }
 
-    @Override
-    public GenericPage clickButton(String nameOfButton) {
-        return null;
-    }
-
     public boolean isSignupInputHintIsShowing() {
         return submitButton.isDisplayed();
     }
@@ -68,11 +66,12 @@ public class SignUpPage extends GenericPage {
         return signupError.getText();
     }
 
-    public GenericPage clickSubmitButton() {
+    public LoadingPage clickSubmitButton() {
         submitButton.click();
-        if (isSignupInputHintIsShowing()) {
-            return this;
-        }
-        return new WelcomePage();
+        return new LoadingPage();
+    }
+
+    public void clickSubmitButtonExpectingMessage() {
+        submitButton.click();
     }
 }

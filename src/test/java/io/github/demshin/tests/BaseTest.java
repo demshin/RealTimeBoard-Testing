@@ -5,9 +5,6 @@ import io.github.demshin.webtestsbase.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
-/**
- * Created by demshin on 21/04/2017 for rtb-testing.
- */
 //@Listeners({ScreenShotOnFailListener.class})
 public class BaseTest {
 

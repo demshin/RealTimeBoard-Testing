@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import io.github.demshin.utils.Generators;
 
+import static io.github.demshin.utils.Time.waitForSeconds;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -22,15 +23,24 @@ public class FullRegistrationTest extends BaseTest {
         signUpPage.fillPassword(Generators.randomPassword());
         assertTrue(signUpPage.isSignupInputHintIsShowing());
 
-        GenericPage welcomePage = signUpPage.clickSubmitButton();
+        LoadingPage loadingPage = signUpPage.clickSubmitButton();
+        assertTrue(loadingPage.isPageOpened());
+
+        waitForSeconds(15);
+
+        WelcomePage welcomePage = new WelcomePage();
         assertTrue(welcomePage.isPageOpened());
 
-        WelcomePage welcomePage1 = new WelcomePage();
-        if (welcomePage instanceof WelcomePage) {
-            welcomePage1 = (WelcomePage) welcomePage;
-        }
-
-        SetupYourTeamPage setupYourTeamPage = welcomePage1.clickContinueButton();
+        SetupYourTeamPage setupYourTeamPage = welcomePage.clickContinueButton();
         assertTrue(setupYourTeamPage.isPageOpened());
+
+        setupYourTeamPage.fillTeamName();
+        InviteYourTeamPage inviteYourTeamPage = setupYourTeamPage.clickContinueButton();
+        assertTrue(inviteYourTeamPage.isPageOpened());
+
+        inviteYourTeamPage.fillEmail();
+        //inviteYourTeamPage.fillEmail();
+       // TellUsMorePage tellUsMorePage = inviteYourTeamPage.clickSendInvitationsButton();
+       // assertTrue(tellUsMorePage.isPageOpened());
     }
 }

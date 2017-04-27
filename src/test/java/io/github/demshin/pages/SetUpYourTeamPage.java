@@ -4,23 +4,20 @@ import io.github.demshin.utils.Generators;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by demshin on 24/04/2017.
- */
 public class SetupYourTeamPage extends GenericPage {
     public static final String PAGE_URL = "https://realtimeboard.com/app/";
 
-    @FindBy(className = "welcomeScreenSlide__header")
-    private WebElement welcomeScreenSlide;
+    @FindBy(className = "welcomeScreenSlide__title")
+    private WebElement welcomeScreenSlideTitle;
 
-    @FindBy(className= "welcomeScreenControl__label")
-    private WebElement welcomScreenLabel;
+    /*@FindBy(css = "ng-bind-html=\"'welcome.team.name.cap'")
+    private WebElement welcomeScreenLabel;*/
 
     @FindBy(className = "welcomeScreenControl__input")
-    private WebElement welcomeScreenInput;
+    private WebElement teamNameInput;
 
-    @FindBy(className = "welcomeScreen__button")
-    private WebElement welcomeScreenButton;
+    @FindBy(className = "welcomeScreen__button--big")
+    private WebElement continueButton;
 
     public SetupYourTeamPage() {
         super(false);
@@ -33,28 +30,19 @@ public class SetupYourTeamPage extends GenericPage {
 
     @Override
     public boolean isPageOpened() {
-        return welcomeScreenSlide.getText().equals("Set up your team");
-    }
-
-    @Override
-    public GenericPage clickButton(String nameOfButton) {
-        return null;
+        return welcomeScreenSlideTitle.getText().equals("Set up your team");
     }
 
     public void fillTeamName() {
-        welcomeScreenInput.sendKeys(Generators.randomTeam());
+        teamNameInput.sendKeys(Generators.randomTeam());
     }
 
-    public boolean isWelcomScreenLabelIsShowing() {
-        return welcomScreenLabel.isDisplayed();
-    }
+    /*public boolean isWelcomScreenLabelIsShowing() {
+        return welcomeScreenLabel.isDisplayed();
+    }*/
 
-    public GenericPage clickContinueButton() {
-        welcomeScreenButton.click();
-        if (isWelcomScreenLabelIsShowing()) {
-            return this;
-        } else {
-            return new InviteYourTeamPage();
-        }
+    public InviteYourTeamPage clickContinueButton() {
+        continueButton.click();
+        return new InviteYourTeamPage();
     }
 }

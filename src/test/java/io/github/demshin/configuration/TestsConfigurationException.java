@@ -1,8 +1,5 @@
-package io.github.demshin.exceptions;
+package io.github.demshin.configuration;
 
-/**
- * Created by mike-sid on 14.07.15.
- */
 public class TestsConfigurationException extends RuntimeException {
 
     public TestsConfigurationException(String message) {

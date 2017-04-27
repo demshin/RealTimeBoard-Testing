@@ -1,29 +1,44 @@
 package io.github.demshin.pages;
 
+import io.github.demshin.utils.Generators;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import static io.github.demshin.utils.Time.waitForSeconds;
+
 public class InviteYourTeamPage extends GenericPage {
 
-    private static final String PAGE_URL = "https://realtimeboard.com";
+    private static final String PAGE_URL = "https://realtimeboard.com/app";
 
     @FindBy(className = "welcomeScreenSlide__title")
     private WebElement welcomeScreenSlide;
 
-    @FindBy(className = "editor-input")
-    private WebElement emailInput;
+    @FindBy(css = "textarea")
+    private WebElement multiEmailInput;
 
-    @FindBy(className = "welcomeScreen__button--big")
+    @FindBy(css = "hm-tap=\"ctrl.invite()\"")
     private WebElement sendIvationsButton;
 
-    @FindBy(className = "welcomeScreen__button--small")
+    @FindBy(css = "hm-tap=\"ctrl.addTeamMembersLater()\"")
     private WebElement skipButton;
 
     @FindBy(css = "hm-tap=\"selectInput()\"")
     private WebElement linkField;
 
-    @FindBy(css = "hm-tap=\"copyToClipboard()\"" )
+    @FindBy(css = "hm-tap=\"copyToClipboard()\"")
     private WebElement copyButton;
+
+    @FindBy(className = "rtb-checkbox__label")
+    private WebElement checkBoxToAddPeople;
+
+    @FindBy(className = "email-content")
+    private WebElement emailContent;
+
+    @FindBy(className = "ui-input__input-wrapper")
+    private WebElement emailInput;
+
+   /* @FindBy(id = "ui-input-46")
+    private WebElement emailInput2;*/
 
     public InviteYourTeamPage() {
         super(false);
@@ -36,13 +51,29 @@ public class InviteYourTeamPage extends GenericPage {
 
     @Override
     public boolean isPageOpened() {
-        return false;
+        return welcomeScreenSlide.getText().equals("Invite your team");
     }
 
-    @Override
-    public GenericPage clickButton(String nameOfButton) {
-        return null;
+    public void fillEmail() {
+        String email = Generators.randomEmail();
+
+        if (multiEmailInput.isDisplayed()) {
+            multiEmailInput.sendKeys(email + " ");
+            while (!emailContent.getText().equals(email)) {
+                waitForSeconds(1);
+            }
+        } else if (emailInput.isDisplayed()) {
+            emailInput.sendKeys(email);
+        }
     }
 
+    public TellUsMorePage clickSendInvitationsButton() {
+        sendIvationsButton.click();
+        return new TellUsMorePage();
+    }
 
+    public TellUsMorePage clickSkipButton() {
+        skipButton.click();
+        return new TellUsMorePage();
+    }
 }

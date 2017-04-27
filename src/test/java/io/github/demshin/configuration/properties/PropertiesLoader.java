@@ -1,7 +1,7 @@
 package io.github.demshin.configuration.properties;
 
 import io.github.demshin.configuration.TestsConfig;
-import io.github.demshin.exceptions.TestsConfigurationException;
+import io.github.demshin.configuration.TestsConfigurationException;
 
 import java.io.IOException;
 import java.io.InputStream;
