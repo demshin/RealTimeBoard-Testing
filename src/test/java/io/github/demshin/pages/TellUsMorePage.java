@@ -22,6 +22,4 @@ public class TellUsMorePage extends GenericPage {
     public boolean isPageOpened() {
         return welcomeScreenSlideTitle.getText().equals("Tell us more about yourself");
     }
-
-
 }

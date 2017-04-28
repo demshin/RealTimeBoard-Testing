@@ -34,11 +34,8 @@ public class InviteYourTeamPage extends GenericPage {
     @FindBy(className = "email-content")
     private WebElement emailContent;
 
-    @FindBy(className = "ui-input__input-wrapper")
+    @FindBy(css = "input")
     private WebElement emailInput;
-
-   /* @FindBy(id = "ui-input-46")
-    private WebElement emailInput2;*/
 
     public InviteYourTeamPage() {
         super(false);

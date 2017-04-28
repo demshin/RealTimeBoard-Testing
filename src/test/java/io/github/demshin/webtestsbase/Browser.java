@@ -5,9 +5,7 @@ package io.github.demshin.webtestsbase;
  */
 public enum  Browser {
     FIREFOX("firefox"),
-    CHROME("chrome"),
-    IE10("ie10"),
-    SAFARI("safari");
+    CHROME("chrome");
     private String browserName;
 
     private Browser(String browserName) {
@@ -18,11 +16,6 @@ public enum  Browser {
         return browserName;
     }
 
-    /**
-     * returns browser object by name
-     * @param name name of browser
-     * @return browser object
-     */
     public static Browser getByName(String name){
         for(Browser browser : values()) {
             if(browser.getBrowserName().equalsIgnoreCase(name)) {

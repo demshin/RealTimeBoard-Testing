@@ -5,9 +5,6 @@ import io.github.demshin.configuration.properties.Property;
 import io.github.demshin.configuration.properties.PropertyFile;
 import io.github.demshin.webtestsbase.Browser;
 
-/**
- * Class for base tests properties - urls for test, browser name and version
- */
 @PropertyFile("config.properties")
 public class TestsConfig {
 
@@ -27,14 +24,9 @@ public class TestsConfig {
     @Property("browser.name")
     private String browser = "firefox";
 
-    @Property("browser.version")
-    private String version = "";
+   /* @Property("browser.version")
+    private String version = "";*/
 
-
-    /**
-     * getting browser object
-     * @return browser object
-     */
     public Browser getBrowser() {
         Browser browserForTests = Browser.getByName(browser);
         if (browserForTests != null) {
@@ -44,13 +36,9 @@ public class TestsConfig {
         }
     }
 
-    /**
-     * getting browser version
-     * @return browser version
-     */
-    public String getBrowserVersion() {
+  /*  public String getBrowserVersion() {
         return version;
-    }
+    }*/
 
 
 }
