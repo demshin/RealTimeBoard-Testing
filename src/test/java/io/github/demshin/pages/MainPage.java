@@ -30,12 +30,7 @@ public class MainPage extends GenericPage {
     }
 
     public SignUpPage clickSignUpButton() {
-        if (burgerButton.isDisplayed()) {
-            waitForSeconds(1);
-            burgerButton.click();
-        } else {
-            signUpButton.click();
-        }
+        signUpButton.click();
         return new SignUpPage();
     }
 }

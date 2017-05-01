@@ -13,19 +13,19 @@ public class InviteYourTeamPage extends GenericPage {
     @FindBy(className = "welcomeScreenSlide__title")
     private WebElement welcomeScreenSlide;
 
-    @FindBy(css = "textarea")
+    @FindBy(css = "textarea[ng-model='enteredEmails']")
     private WebElement multiEmailInput;
 
-    @FindBy(css = "hm-tap=\"ctrl.invite()\"")
-    private WebElement sendIvationsButton;
+    @FindBy(css = "div[hm-tap='ctrl.invite()']")
+    private WebElement sendInvitationsButton;
 
-    @FindBy(css = "hm-tap=\"ctrl.addTeamMembersLater()\"")
+    @FindBy(css = "div[hm-tap='ctrl.addTeamMembersLater()']")
     private WebElement skipButton;
 
-    @FindBy(css = "hm-tap=\"selectInput()\"")
+    @FindBy(css = "div[hm-tap='selectInput()']")
     private WebElement linkField;
 
-    @FindBy(css = "hm-tap=\"copyToClipboard()\"")
+    @FindBy(css = "hm-tap='copyToClipboard()'")
     private WebElement copyButton;
 
     @FindBy(className = "rtb-checkbox__label")
@@ -34,7 +34,7 @@ public class InviteYourTeamPage extends GenericPage {
     @FindBy(className = "email-content")
     private WebElement emailContent;
 
-    @FindBy(css = "input")
+    @FindBy(css = "input[ng-attr-id='ui-input-{{::id}}']")
     private WebElement emailInput;
 
     public InviteYourTeamPage() {
@@ -53,7 +53,6 @@ public class InviteYourTeamPage extends GenericPage {
 
     public void fillEmail() {
         String email = Generators.randomEmail();
-
         if (multiEmailInput.isDisplayed()) {
             multiEmailInput.sendKeys(email + " ");
             while (!emailContent.getText().equals(email)) {
@@ -65,7 +64,12 @@ public class InviteYourTeamPage extends GenericPage {
     }
 
     public TellUsMorePage clickSendInvitationsButton() {
-        sendIvationsButton.click();
+        sendInvitationsButton.click();
+        return new TellUsMorePage();
+    }
+
+    public TellUsMorePage clickSkipForNowButton() {
+        skipButton.click();
         return new TellUsMorePage();
     }
 

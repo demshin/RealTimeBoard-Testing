@@ -47,8 +47,6 @@ public class WebDriverFactory {
                 }
             }
             driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT_TIMEOUT, TimeUnit.SECONDS);
-            Dimension dimension = new Dimension(1280, 800);
-            driver.manage().window().setSize(dimension);
         } else {
             throw new IllegalStateException("Driver has already been initialized. Quit it before using this method");
         }

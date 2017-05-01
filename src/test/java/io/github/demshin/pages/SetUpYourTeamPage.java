@@ -10,9 +10,6 @@ public class SetupYourTeamPage extends GenericPage {
     @FindBy(className = "welcomeScreenSlide__title")
     private WebElement welcomeScreenSlideTitle;
 
-    /*@FindBy(css = "ng-bind-html=\"'welcome.team.name.cap'")
-    private WebElement welcomeScreenLabel;*/
-
     @FindBy(className = "welcomeScreenControl__input")
     private WebElement teamNameInput;
 
@@ -36,10 +33,6 @@ public class SetupYourTeamPage extends GenericPage {
     public void fillTeamName() {
         teamNameInput.sendKeys(Generators.randomTeam());
     }
-
-    /*public boolean isWelcomScreenLabelIsShowing() {
-        return welcomeScreenLabel.isDisplayed();
-    }*/
 
     public InviteYourTeamPage clickContinueButton() {
         continueButton.click();

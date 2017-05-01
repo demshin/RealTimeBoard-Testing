@@ -1,19 +1,15 @@
 package io.github.demshin.tests;
 
 import io.github.demshin.pages.*;
+import io.github.demshin.utils.Generators;
 import org.testng.annotations.Test;
 
-import io.github.demshin.utils.Generators;
-
 import static io.github.demshin.utils.Time.waitForSeconds;
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-//@Listeners({ScreenShotOnFailListener.class})
-public class FullRegistrationTest extends BaseTest {
-
+public class SkipInvitationTeam extends BaseTest{
     @Test
-    public void successRegistrationTest() throws Exception {
+    public void successRegistrationTestWithoutInvitationTeam() throws Exception {
         MainPage mainPage = new MainPage();
         SignUpPage signUpPage = mainPage.clickSignUpButton();
         assertTrue(signUpPage.isPageOpened());
@@ -38,8 +34,10 @@ public class FullRegistrationTest extends BaseTest {
         InviteYourTeamPage inviteYourTeamPage = setupYourTeamPage.clickContinueButton();
         assertTrue(inviteYourTeamPage.isPageOpened());
 
-        inviteYourTeamPage.fillEmail();
         TellUsMorePage tellUsMorePage = inviteYourTeamPage.clickSendInvitationsButton();
         assertTrue(tellUsMorePage.isPageOpened());
+
+        tellUsMorePage.selectRole();
+       // tellUsMorePage.selectTeamSize();
     }
 }
