@@ -10,6 +10,9 @@ public class SetupYourTeamPage extends GenericPage {
     @FindBy(className = "welcomeScreenSlide__title")
     private WebElement welcomeScreenSlideTitle;
 
+    @FindBy(className = "welcomeScreenControl__label")
+    private WebElement teamNameLabelText;
+
     @FindBy(className = "welcomeScreenControl__input")
     private WebElement teamNameInput;
 
@@ -37,5 +40,13 @@ public class SetupYourTeamPage extends GenericPage {
     public InviteYourTeamPage clickContinueButton() {
         continueButton.click();
         return new InviteYourTeamPage();
+    }
+
+    public void clickContinueButtonExpectingMessage() {
+        continueButton.click();
+    }
+
+    public String getTextOfTeamNameLabelText() {
+        return teamNameLabelText.getText();
     }
 }
