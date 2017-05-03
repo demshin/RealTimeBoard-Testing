@@ -1,5 +1,6 @@
 package io.github.demshin.utils;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.UUID;
 
@@ -45,20 +46,34 @@ public class Generators {
         return roles[n];
     }
 
-    public static String randomSizeOfCompany() {
+    public static String randomTeamSize() {
         String[] size = new String[10];
-        size[0] = "1";
-        size[2] = "2 - 5";
-        size[3] = "6 - 10";
-        size[4] = "11 - 25";
-        size[5] = "26 - 50";
-        size[6] = "51 - 500";
-        size[7] = "501 - 1000";
-        size[8] = "1001 - 5000";
-        size[9] = "5001 or more";
+        size[0] = "Myself only";
+        size[2] = "2 - 5 employees";
+        size[3] = "6 - 10 employees";
+        size[4] = "11 - 25 employees";
+        size[5] = "26 - 50 employees";
+        size[6] = "51 - 500 employees";
+        size[7] = "501 - 1000 employees";
+        size[8] = "1001 - 5000 employees";
+        size[9] = "5000+ employees";
 
         Random random = new Random();
         int n = random.nextInt(size.length);
         return size[n];
+    }
+
+    public static String randomPhoneNumber() {
+        Random random = new Random();
+
+        int num1 = (random.nextInt(7) + 1) * 100 + (random.nextInt(8) * 10) + random.nextInt(8);
+        int num2 = random.nextInt(743);
+        int num3 = random.nextInt(10000);
+
+        DecimalFormat df3 = new DecimalFormat("000"); // 3 zeros
+        DecimalFormat df4 = new DecimalFormat("0000"); // 4 zeros
+
+        String phoneNumber = df3.format(num1) + "-" + df3.format(num2) + "-" + df4.format(num3);
+        return phoneNumber;
     }
 }

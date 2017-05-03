@@ -15,8 +15,17 @@ public class TellUsMorePage extends GenericPage {
     @FindBy(className = "welcomeScreenSlide__title")
     private WebElement welcomeScreenSlideTitle;
 
-    @FindBy(css = "select[ng-options='option as option.label for option in ctrl.roles.options']")
+    @FindBy(css = "select[ng-model='ctrl.roles.selected']")
     private WebElement selectRoleDropdown;
+
+    @FindBy(css = "select[ng-model='ctrl.teamSizes.selected']")
+    private WebElement selectTeamSizesDropdown;
+
+    @FindBy(css = "input[ng-model='ctrl.teamPhone']")
+    private WebElement phoneInput;
+
+    @FindBy(css = "div[hm-tap='ctrl.submit()']")
+    private WebElement continueButton;
 
     @Override
     protected void openPage() {
@@ -32,8 +41,23 @@ public class TellUsMorePage extends GenericPage {
         String role = Generators.randomRole();
         Select dropdown = new Select(selectRoleDropdown);
         dropdown.selectByVisibleText(role);
+    }
 
-      //  selectRoleDropdown.click();
+    public void selectTeamSize() {
+        String size = Generators.randomTeamSize();
+        Select dropdown = new Select(selectTeamSizesDropdown);
+        dropdown.selectByVisibleText(size);
+    }
 
+    public WhatDoYouLikePage clickContinueButton() {
+        continueButton.click();
+        return new WhatDoYouLikePage();
+    }
+
+    public void fillPhoneNumberIfNeeded() {
+        if (phoneInput.isDisplayed()) {
+            String phoneNumber = Generators.randomPhoneNumber();
+            phoneInput.sendKeys(phoneNumber);
+        }
     }
 }

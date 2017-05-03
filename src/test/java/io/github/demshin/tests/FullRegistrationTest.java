@@ -12,7 +12,7 @@ import static org.testng.Assert.assertTrue;
 //@Listeners({ScreenShotOnFailListener.class})
 public class FullRegistrationTest extends BaseTest {
 
-    @Test
+    @Test(description = "Full registration")
     public void successRegistrationTest() throws Exception {
         MainPage mainPage = new MainPage();
         SignUpPage signUpPage = mainPage.clickSignUpButton();

@@ -12,7 +12,7 @@ import static org.testng.Assert.assertTrue;
 //@Listeners({ScreenShotOnFailListener.class})
 public class PasswordHintsTests extends BaseTest{
 
-    @Test
+    @Test(description = "Password is short")
     public void verifyThatPasswordIsShort() {
         MainPage mainPage = new MainPage();
         SignUpPage signUpPage = mainPage.clickSignUpButton();
@@ -26,7 +26,7 @@ public class PasswordHintsTests extends BaseTest{
         assertEquals(signUpPage.getTextOfSignupInputHint(), "Password must be 6+ characters");
     }
 
-    @Test
+    @Test(description = "Password is weak")
     public void verifyThatPasswordIsWeak() {
         MainPage mainPage = new MainPage();
         SignUpPage signUpPage = mainPage.clickSignUpButton();
@@ -40,7 +40,7 @@ public class PasswordHintsTests extends BaseTest{
         assertEquals(signUpPage.getTextOfSignupInputHint(), "Weak password");
     }
 
-    @Test
+    @Test(description = "Password is so-so")
     public void verifyThatPasswordIsSoSo() {
         MainPage mainPage = new MainPage();
         SignUpPage signUpPage = mainPage.clickSignUpButton();
@@ -54,7 +54,7 @@ public class PasswordHintsTests extends BaseTest{
         assertEquals(signUpPage.getTextOfSignupInputHint(), "So-so password");
     }
 
-    @Test
+    @Test(description = "Password is good")
     public void verifyThatPasswordIsGood() {
         MainPage mainPage = new MainPage();
         SignUpPage signUpPage = mainPage.clickSignUpButton();
@@ -68,7 +68,7 @@ public class PasswordHintsTests extends BaseTest{
         assertEquals(signUpPage.getTextOfSignupInputHint(), "Good password");
     }
 
-    @Test
+    @Test(description = "Password is great")
     public void verifyThatPasswordIsGreat() {
         MainPage mainPage = new MainPage();
         SignUpPage signUpPage = mainPage.clickSignUpButton();

@@ -8,7 +8,7 @@ import static io.github.demshin.utils.Time.waitForSeconds;
 import static org.testng.Assert.assertTrue;
 
 public class SkipInvitationTeam extends BaseTest{
-    @Test
+    @Test(description = "Full registration with skipping invitation team")
     public void successRegistrationTestWithoutInvitationTeam() throws Exception {
         MainPage mainPage = new MainPage();
         SignUpPage signUpPage = mainPage.clickSignUpButton();
@@ -38,6 +38,12 @@ public class SkipInvitationTeam extends BaseTest{
         assertTrue(tellUsMorePage.isPageOpened());
 
         tellUsMorePage.selectRole();
-       // tellUsMorePage.selectTeamSize();
+        tellUsMorePage.selectTeamSize();
+        tellUsMorePage.fillPhoneNumberIfNeeded();
+        WhatDoYouLikePage whatDoYouLikePage = tellUsMorePage.clickContinueButton();
+        assertTrue(whatDoYouLikePage.isPageOpened());
+
+        BoardPage boardPage = whatDoYouLikePage.clickSkipButton();
+        assertTrue(boardPage.isPageOpened());
     }
 }

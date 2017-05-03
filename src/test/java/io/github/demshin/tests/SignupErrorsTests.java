@@ -9,7 +9,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class SignupErrorsTests extends BaseTest {
-    @Test
+    @Test(description = "Name error")
     public void verifyNameError() {
         MainPage mainPage = new MainPage();
         SignUpPage signUpPage = mainPage.clickSignUpButton();
@@ -22,7 +22,7 @@ public class SignupErrorsTests extends BaseTest {
         assertEquals(signUpPage.getTextOfSignupError(), "Please enter your name");
     }
 
-    @Test
+    @Test(description = "Email error")
     public void verifyEmailError() {
         MainPage mainPage = new MainPage();
         SignUpPage signUpPage = mainPage.clickSignUpButton();
@@ -35,7 +35,7 @@ public class SignupErrorsTests extends BaseTest {
         assertEquals(signUpPage.getTextOfSignupError(), "Please enter your email address");
     }
 
-    @Test
+    @Test(description = "Already registered")
     public void verifyThatEmailIsAlreadyRegistered() {
         MainPage mainPage = new MainPage();
         SignUpPage signUpPage = mainPage.clickSignUpButton();
@@ -48,7 +48,7 @@ public class SignupErrorsTests extends BaseTest {
         assertEquals(signUpPage.getTextOfSignupError(), "Sorry, this email is already registered");
     }
 
-    @Test
+    @Test(description = "Name and password cannot be the same")
     public void verifyThatNameAndPasswordAreEqual() {
         MainPage mainPage = new MainPage();
         SignUpPage signUpPage = mainPage.clickSignUpButton();
