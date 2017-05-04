@@ -5,7 +5,7 @@ import io.github.demshin.webtestsbase.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
-//@Listeners({ScreenShotOnFailListener.class})
+@Listeners({ScreenShotOnFailListener.class})
 public class BaseTest {
 
     @BeforeClass

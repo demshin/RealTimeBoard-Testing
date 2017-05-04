@@ -2,6 +2,8 @@ package io.github.demshin.tests;
 
 import io.github.demshin.pages.MainPage;
 import io.github.demshin.pages.SignUpPage;
+import io.github.demshin.utils.ScreenShotOnFailListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import io.github.demshin.utils.Generators;
@@ -9,7 +11,7 @@ import io.github.demshin.utils.Generators;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-//@Listeners({ScreenShotOnFailListener.class})
+@Listeners({ScreenShotOnFailListener.class})
 public class PasswordHintsTests extends BaseTest{
 
     @Test(description = "Password is short")

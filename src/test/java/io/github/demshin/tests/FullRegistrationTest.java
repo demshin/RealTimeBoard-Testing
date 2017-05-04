@@ -1,6 +1,8 @@
 package io.github.demshin.tests;
 
 import io.github.demshin.pages.*;
+import io.github.demshin.utils.ScreenShotOnFailListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import io.github.demshin.utils.Generators;
@@ -9,7 +11,7 @@ import static io.github.demshin.utils.Time.waitForSeconds;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-//@Listeners({ScreenShotOnFailListener.class})
+@Listeners({ScreenShotOnFailListener.class})
 public class FullRegistrationTest extends BaseTest {
 
     @Test(description = "Full registration")

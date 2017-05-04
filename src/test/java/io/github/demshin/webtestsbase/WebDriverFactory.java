@@ -1,14 +1,20 @@
 package io.github.demshin.webtestsbase;
 
 import io.github.demshin.configuration.TestsConfig;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -59,9 +65,10 @@ public class WebDriverFactory {
         }
     }
 
-
-    public static void takeScreenShot() {
-        System.out.println("ScreenShot method called");
+    public static void takeScreenShot() throws IOException {
+        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        String path = "./target/screenshots/" + screenshot.getName();
+        FileUtils.copyFile(screenshot, new File(path));
     }
 
 }

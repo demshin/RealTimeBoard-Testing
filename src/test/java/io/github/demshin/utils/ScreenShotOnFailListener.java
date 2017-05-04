@@ -3,6 +3,8 @@ package io.github.demshin.utils;
 import io.github.demshin.webtestsbase.WebDriverFactory;
 import org.testng.*;
 
+import java.io.IOException;
+
 /**
  * This listener adds screenshot taking on test failure
  */
@@ -19,7 +21,11 @@ public class ScreenShotOnFailListener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        WebDriverFactory.takeScreenShot();
+        try {
+            WebDriverFactory.takeScreenShot();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
