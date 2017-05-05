@@ -1,6 +1,6 @@
 package io.github.demshin.utils;
 
-import io.github.demshin.webtestsbase.WebDriverFactory;
+import io.github.demshin.setup.WebDriverFactory;
 import org.testng.*;
 
 import java.io.IOException;

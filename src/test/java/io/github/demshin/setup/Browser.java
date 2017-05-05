@@ -1,4 +1,4 @@
-package io.github.demshin.webtestsbase;
+package io.github.demshin.setup;
 
 /**
  * This class represents browsers. For add support of your browser - add it to this enum

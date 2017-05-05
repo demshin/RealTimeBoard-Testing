@@ -1,7 +1,7 @@
 package io.github.demshin.pages;
 
 import io.github.demshin.utils.Time;
-import io.github.demshin.webtestsbase.WebDriverFactory;
+import io.github.demshin.setup.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 

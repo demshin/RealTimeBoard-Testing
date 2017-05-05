@@ -1,4 +1,4 @@
-package io.github.demshin.webtestsbase;
+package io.github.demshin.setup;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 

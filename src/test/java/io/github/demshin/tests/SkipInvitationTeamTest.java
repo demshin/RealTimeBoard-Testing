@@ -5,12 +5,11 @@ import io.github.demshin.utils.Generators;
 import org.testng.annotations.Test;
 
 import static io.github.demshin.utils.Time.waitForSeconds;
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class SetupYourTeamMessage extends BaseTest{
-    @Test(description = "Message when press 'Continue' without filling team name")
-    public void skipFillingTeamNameInput() {
+public class SkipInvitationTeamTest extends BaseTest{
+    @Test(description = "Full registration with skipping invitation team")
+    public void successRegistrationTestWithoutInvitationTeam() throws Exception {
         MainPage mainPage = new MainPage();
         SignUpPage signUpPage = mainPage.clickSignUpButton();
         assertTrue(signUpPage.isPageOpened());
@@ -31,7 +30,20 @@ public class SetupYourTeamMessage extends BaseTest{
         SetupYourTeamPage setupYourTeamPage = welcomePage.clickContinueButton();
         assertTrue(setupYourTeamPage.isPageOpened());
 
-        setupYourTeamPage.clickContinueButtonExpectingMessage();
-        assertEquals(setupYourTeamPage.getTextOfTeamNameLabelText(), "Please enter a Team name");
+        setupYourTeamPage.fillTeamName();
+        InviteYourTeamPage inviteYourTeamPage = setupYourTeamPage.clickContinueButton();
+        assertTrue(inviteYourTeamPage.isPageOpened());
+
+        TellUsMorePage tellUsMorePage = inviteYourTeamPage.clickSendInvitationsButton();
+        assertTrue(tellUsMorePage.isPageOpened());
+
+        tellUsMorePage.selectRole();
+        tellUsMorePage.selectTeamSize();
+        tellUsMorePage.fillPhoneNumberIfNeeded();
+        WhatDoYouLikePage whatDoYouLikePage = tellUsMorePage.clickContinueButton();
+        assertTrue(whatDoYouLikePage.isPageOpened());
+
+        BoardPage boardPage = whatDoYouLikePage.clickSkipButton();
+        assertTrue(boardPage.isPageOpened());
     }
 }

@@ -3,7 +3,7 @@ package io.github.demshin.configuration;
 import io.github.demshin.configuration.properties.PropertiesLoader;
 import io.github.demshin.configuration.properties.Property;
 import io.github.demshin.configuration.properties.PropertyFile;
-import io.github.demshin.webtestsbase.Browser;
+import io.github.demshin.setup.Browser;
 
 @PropertyFile("config.properties")
 public class TestsConfig {
@@ -22,10 +22,7 @@ public class TestsConfig {
     }
 
     @Property("browser.name")
-    private String browser = "firefox";
-
-   /* @Property("browser.version")
-    private String version = "";*/
+    private String browser = "";
 
     public Browser getBrowser() {
         Browser browserForTests = Browser.getByName(browser);
